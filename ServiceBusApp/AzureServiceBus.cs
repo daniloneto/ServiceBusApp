@@ -16,26 +16,26 @@ namespace ServiceBusApp
 
         public async Task<bool> PostToServiceBus(string connectionString, string serviceBusQueue, string msgJson)
         {
-          
-            await using (ServiceBusClient client = new ServiceBusClient(connectionString))
-            {                
-                ServiceBusSender sender = client.CreateSender(serviceBusQueue);
-             
-                ServiceBusMessage message = new ServiceBusMessage(msgJson);
-                
-                try
-                {                    
-                    await sender.SendMessageAsync(message);                                     
-                }
-                catch (Exception ex)
+            try
+            {
+                await using (ServiceBusClient client = new ServiceBusClient(connectionString))
                 {
+                    ServiceBusSender sender = client.CreateSender(serviceBusQueue);
 
-                    //log exception and return false
-                    Console.WriteLine(ex.Message);
-                    return false;
+                    ServiceBusMessage message = new ServiceBusMessage(msgJson);
+
+                    await sender.SendMessageAsync(message);
+
                 }
-            }            
-            return true;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                //log exception and return false
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+            
         }
 
         public void ListeningServiceBus(string connectionString, string serviceBusQueue)
