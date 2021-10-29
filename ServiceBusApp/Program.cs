@@ -8,10 +8,8 @@ namespace ServiceBusApp
     {
         public static void Main(string[] args)
         {
-            //var connectionString = "Endpoint=sb://yourazure.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=342iojdfdsoij3df";
-            //var serviceBusName = "your-azure-queue";
-            var connectionString = "Endpoint=sb://jdmnbus01.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=MC6W/5ivuNMe9hmkoyv1N3iAKffEUStd/sKfyxxYX9w=";
-            var serviceBusName = "dev-email-queue";
+            var connectionString = "Endpoint=sb://yourazure.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=342iojdfdsoij3df";
+            var serviceBusName = "your-azure-queue";
 
             AzureServiceBus azureServiceBus = new AzureServiceBus();
             IEmailEntity emailEntity = new IEmailEntity();
